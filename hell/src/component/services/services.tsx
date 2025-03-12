@@ -11,7 +11,6 @@ const Services = () => {
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
-    // Check the initial scroll position when component mounts
     if (scrollY.get() >= 550) {
       setStartAnimation(true);
     }
@@ -39,7 +38,7 @@ const Services = () => {
 
   const itemVariants = {
     hidden: { x: -100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.6 } },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.1 } },
   };
 
   const imageVariants = {

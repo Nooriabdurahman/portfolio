@@ -1,7 +1,7 @@
-import { useScroll, useTransform, motion } from "framer-motion";
-import { useRef } from "react";
+import { useScroll, useTransform, motion } from 'framer-motion';
+import { useRef } from 'react';
+import SignIn from '../content.tsx/signIn';
 
-// Define the data structure for items
 interface Item {
   id: number;
   img: string;
@@ -10,46 +10,44 @@ interface Item {
   link: string;
 }
 
-// Sample items data
 const items: Item[] = [
   {
     id: 1,
-    img: "/Capture.PNG",
-    title: "Granda project",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...",
-    link: "https://velvety-truffle-41eebe.netlify.app/",
+    img: '/Capture.PNG',
+    title: 'Granda project',
+    desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...',
+    link: 'https://velvety-truffle-41eebe.netlify.app/',
   },
   {
     id: 2,
-    img: "/fuckyourmother.PNG",
-    title: "Blendora project",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...",
-    link: "https://phenomenal-wisp-3a356e.netlify.app",
+    img: '/fuckyourmother.PNG',
+    title: 'Blendora project',
+    desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...',
+    link: 'https://phenomenal-wisp-3a356e.netlify.app',
   },
   {
     id: 3,
-    img: "/fuckkall.PNG",
-    title: "Basic clock project",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...",
-    link: "https://67cfde6a7bb3e9146b5fe520--admirable-entremet-8cd378.netlify.app",
+    img: '/fuckkall.PNG',
+    title: 'Basic clock project',
+    desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...',
+    link: 'https://67cfde6a7bb3e9146b5fe520--admirable-entremet-8cd378.netlify.app',
   },
   {
     id: 4,
-    img: "/hekkk.PNG",
-    title: "Headphone",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...",
-    link: "https://67cfde6a7bb3e9146b5fe520--admirable-entremet-8cd378.netlify.app",
+    img: '/hekkk.PNG',
+    title: 'Headphone',
+    desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...',
+    link: 'https://67cfde6a7bb3e9146b5fe520--admirable-entremet-8cd378.netlify.app',
   },
   {
     id: 5,
-    img: "/fjfj.PNG",
-    title: "Git News Project",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...",
-    link: "https://roaring-buttercream-41e3dd.netlify.app/",
+    img: '/fjfj.PNG',
+    title: 'Git News Project',
+    desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur...',
+    link: 'https://roaring-buttercream-41e3dd.netlify.app/',
   },
 ];
 
-// ListType component
 const ListType: React.FC<{ item: Item }> = ({ item }) => {
   return (
     <div className="h-screen w-screen flex items-center justify-center gap-[100px] p-10">
@@ -69,28 +67,29 @@ const ListType: React.FC<{ item: Item }> = ({ item }) => {
   );
 };
 
-// Portfolio component
+const Footer = () => {
+  return (
+    <footer className="h-[100vh] w-full flex items-center justify-center bg-gray-800 text-white">
+     <SignIn/>
+    </footer>
+  );
+};
+ 
 const Portfolio = () => {
   const ref = useRef<HTMLDivElement | null>(null);
-
-  // Use vertical scroll to control horizontal movement
   const { scrollYProgress } = useScroll({ target: ref });
   const xTranslate = useTransform(scrollYProgress, [0, 1], [0, -window.innerWidth * (items.length - 1)]);
 
   return (
     <div className="portfolio">
-      {/* Header */}
       <header className="h-[100vh] flex items-center justify-center">
         <h2 className="text-[56px] font-bold text-center">Portfolio Gallery</h2>
       </header>
 
-      {/* Horizontal Scroll Section */}
+    
       <section ref={ref} className="h-[500vh] relative">
         <div className="sticky top-0 h-screen overflow-hidden">
-          <motion.div
-            className="flex h-screen w-max"
-            style={{ x: xTranslate }}
-          >
+          <motion.div className="flex h-screen w-max" style={{ x: xTranslate }}>
             {items.map((item) => (
               <ListType key={item.id} item={item} />
             ))}
@@ -98,6 +97,7 @@ const Portfolio = () => {
         </div>
       </section>
 
+      <Footer />
     </div>
   );
 };

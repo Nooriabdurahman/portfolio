@@ -71,7 +71,7 @@ const Hero = () => {
         <a href="#services" className="bg-[#3a205c] mb-[20px] w-[40px] rounded-4xl">
           <img
             src={source}
-            className="w-[50px]  h-[60px] mix-blend-color-burn rounded-full"
+            className="w-[50px]  h-[60px] mix-blend-color-burn m-auto block rounded-full"
             alt="profile"
           />
         </a>
